@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wip.models;
+package com.liberymutual.goforcode.wimp.models;
 
 import java.util.Date;
 

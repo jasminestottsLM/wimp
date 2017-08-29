@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wip.models;
+package com.liberymutual.goforcode.wimp.models;
 
 import java.util.Date;
 
@@ -30,7 +30,7 @@ public class Actor {
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -62,7 +62,7 @@ public class Actor {
 	public Date getBirthDate() {
 		return birthDate;
 	}
-
+	
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}

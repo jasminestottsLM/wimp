@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wip.api;
+package com.liberymutual.goforcode.wimp.api;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.liberymutual.goforcode.wip.models.Movie;
-import com.liberymutual.goforcode.wip.repositories.MovieRepository;
+import com.liberymutual.goforcode.wimp.models.Movie;
+import com.liberymutual.goforcode.wimp.repositories.MovieRepository;
 
 @RequestMapping("/api/movies")
 @RestController
