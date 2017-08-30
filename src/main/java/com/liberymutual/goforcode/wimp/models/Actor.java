@@ -47,8 +47,8 @@ public class Actor {
 		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastName = lastname;
+	public void setLastname(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public Long getActiveSinceYear() {
