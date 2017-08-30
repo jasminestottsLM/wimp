@@ -13,18 +13,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.liberymutual.goforcode.wimp.models.Actor;
+import com.liberymutual.goforcode.wimp.models.ActorWithMovies;
+import com.liberymutual.goforcode.wimp.models.Award;
 import com.liberymutual.goforcode.wimp.models.Movie;
 import com.liberymutual.goforcode.wimp.repositories.ActorRepository;
+import com.liberymutual.goforcode.wimp.repositories.AwardRepository;
 import com.liberymutual.goforcode.wimp.repositories.MovieRepository;
 
 @RequestMapping("/api/actors")
 @RestController
 public class ActorApiController {
 
-private ActorRepository actorRepo;
+	private ActorRepository actorRepo;
+	private AwardRepository awardRepo;
 	
-	public ActorApiController(ActorRepository actorRepo) {
+	public ActorApiController(ActorRepository actorRepo, AwardRepository awardRepo) {
 		this.actorRepo = actorRepo;
+		this.awardRepo = awardRepo;
 	}
 
 
@@ -40,6 +45,14 @@ private ActorRepository actorRepo;
 		if (actor == null) {
 			throw new StuffNotFoundException();
 		}
+/*		ActorWithMovies newActor = new ActorWithMovies();
+		newActor.setActiveSinceYear(actor.getActiveSinceYear());
+		newActor.setBirthDate(actor.getBirthDate());
+		newActor.setMovies(actor.getMovies());
+		newActor.setFirstName(actor.getFirstName());
+		newActor.setLastname(actor.getLastName());
+		return newActor;
+*/		
 		return actor;
 	}
 	
@@ -60,8 +73,16 @@ private ActorRepository actorRepo;
 	public Actor create(@RequestBody Actor actor) {
 		return actorRepo.save(actor);
 	}
-	
-	
+/*	
+	@PostMapping("{actorId}/awards") 
+	public Actor associateAward(@PathVariable long actorId, @RequestBody Award award) {
+		Actor actor = actorRepo.findOne(actorId);
+		award = awardRepo.findOne(award.getId());
+		actor.addAward(award);
+		actorRepo.save(actor);
+		return actor;
+	}
+*/	
 	@PutMapping("{id}")
 	public Actor update(@RequestBody Actor actor, @PathVariable long id) {
 		actor.setId(id);
