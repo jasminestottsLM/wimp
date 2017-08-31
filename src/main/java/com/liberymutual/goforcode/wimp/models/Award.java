@@ -1,29 +1,27 @@
 package com.liberymutual.goforcode.wimp.models;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@JsonIdentityInfo (
+		generator=ObjectIdGenerators.PropertyGenerator.class,
+		property="id"
+		)
 @Entity
 public class Award {
 
-	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
-/*	@ManyToOne
-	private List<Actor> actors;
-
+		
 	@Column(length=500, nullable=false)
 	private String title;
 	
@@ -33,14 +31,17 @@ public class Award {
 	@Column
 	private int year;
 
-	public List<Actor> getActors() {
-		return actors;
-	}
+    @ManyToOne
+    private Actor actor;
 
-	public void setActors(List<Actor> actors) {
-		this.actors = actors;
-	}
-
+    public Award() {}
+    
+    public Award(String title, String organization, int year) {
+    	this.title = title;
+    	this.organization = organization;
+    	this.year = year;
+    }
+    
 	public Long getId() {
 		return id;
 	}
@@ -72,5 +73,13 @@ public class Award {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	*/
+
+	public Actor getActor() {
+		return actor;
+	}
+
+	public void setActor(Actor actor) {
+		this.actor = actor;
+	}
+	
 }

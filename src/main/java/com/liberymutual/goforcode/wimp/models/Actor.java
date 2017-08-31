@@ -43,16 +43,17 @@ public class Actor {
 //	@JsonIgnore
 	@ManyToMany(mappedBy="actors")
 	private List<Movie> movies;
-	/*	
-	@OneToMany(mappedBy="actors")
+	
+	@OneToMany
 	private List<Award> awards;
 
 	public void addAward(Award award) {
 		if (awards == null) {
 			awards = new ArrayList<Award>();
 		}
+		awards.add(award);
 	}
-*/	
+	
 	public Long getId() {
 		return id;
 	}
@@ -103,6 +104,14 @@ public class Actor {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public List<Award> getAwards() {
+		return awards;
+	}
+
+	public void setAwards(List<Award> awards) {
+		this.awards = awards;
 	}
 
 	

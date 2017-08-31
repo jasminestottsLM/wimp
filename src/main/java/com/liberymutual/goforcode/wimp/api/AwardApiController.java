@@ -20,29 +20,27 @@ import com.liberymutual.goforcode.wimp.repositories.ActorRepository;
 import com.liberymutual.goforcode.wimp.repositories.AwardRepository;
 import com.liberymutual.goforcode.wimp.repositories.MovieRepository;
 
-@RequestMapping("/api/actors")
+@RequestMapping("/api/awards")
 @RestController
-public class ActorApiController {
+public class AwardApiController {
 
-	private ActorRepository actorRepo;
 	private AwardRepository awardRepo;
 	
-	public ActorApiController(ActorRepository actorRepo, AwardRepository awardRepo) {
-		this.actorRepo = actorRepo;
+	public AwardApiController(AwardRepository awardRepo) {
 		this.awardRepo = awardRepo;
 	}
 
 
 	@GetMapping("")
-	public List<Actor> getAll() {
-		return actorRepo.findAll();
+	public List<Award> getAll() {
+		return awardRepo.findAll();
 	}
 
 	
 	@GetMapping("{id}")
-	public Actor getOne(@PathVariable long id) throws StuffNotFoundException {
-		Actor actor = actorRepo.findOne(id);
-		if (actor == null) {
+	public Award getOne(@PathVariable long id) throws StuffNotFoundException {
+		Award award = awardRepo.findOne(id);
+		if (award == null) {
 			throw new StuffNotFoundException();
 		}
 /*		ActorWithMovies newActor = new ActorWithMovies();
@@ -53,39 +51,30 @@ public class ActorApiController {
 		newActor.setLastname(actor.getLastName());
 		return newActor;
 */		
-		return actor;
+		return award;
 	}
 	
 	@DeleteMapping("{id}") 
 	public String delete(@PathVariable long id) {
 		try {
-			Actor actor = actorRepo.findOne(id);
-			String msg = actor.getFirstName() + " " + actor.getLastName() + " has been deleted.";
-			actorRepo.delete(id);
+			Award award = awardRepo.findOne(id);
+			String msg = award.getTitle() + " has been deleted.";
+			awardRepo.delete(id);
 			return msg;
 		}
 		catch (EmptyResultDataAccessException ardae) {
-			return "This actor does not exist";
+			return "This award does not exist";
 		}
 	}
 	
 	@PostMapping("")
-	public Actor create(@RequestBody Actor actor) {
-		return actorRepo.save(actor);
-	}
-
-	@PostMapping("{actorId}/awards") 
-	public Actor associateAward(@PathVariable long actorId, @RequestBody Award award) {
-		Actor actor = actorRepo.findOne(actorId);
-		award = awardRepo.findOne(award.getId());
-		actor.addAward(award);
-		actorRepo.save(actor);
-		return actor;
+	public Award create(@RequestBody Award award) {
+		return awardRepo.save(award);
 	}
 	
 	@PutMapping("{id}")
-	public Actor update(@RequestBody Actor actor, @PathVariable long id) {
-		actor.setId(id);
-		return actorRepo.save(actor);
+	public Award update(@RequestBody Award award, @PathVariable long id) {
+		award.setId(id);
+		return awardRepo.save(award);
 	}
 }
