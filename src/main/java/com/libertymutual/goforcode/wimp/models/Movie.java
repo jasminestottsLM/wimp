@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.models;
+package com.libertymutual.goforcode.wimp.models;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 public class Movie {
 
-	@Id 
+	@Id  
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	

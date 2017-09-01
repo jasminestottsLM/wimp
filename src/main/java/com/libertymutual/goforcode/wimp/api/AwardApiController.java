@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.api;
+package com.libertymutual.goforcode.wimp.api;
 
 import java.util.List;
 
@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.liberymutual.goforcode.wimp.models.Actor;
-import com.liberymutual.goforcode.wimp.models.ActorWithMovies;
-import com.liberymutual.goforcode.wimp.models.Award;
-import com.liberymutual.goforcode.wimp.models.Movie;
-import com.liberymutual.goforcode.wimp.repositories.ActorRepository;
-import com.liberymutual.goforcode.wimp.repositories.AwardRepository;
-import com.liberymutual.goforcode.wimp.repositories.MovieRepository;
+import com.libertymutual.goforcode.wimp.models.Actor;
+import com.libertymutual.goforcode.wimp.models.Award;
+import com.libertymutual.goforcode.wimp.models.Movie;
+import com.libertymutual.goforcode.wimp.repositories.ActorRepository;
+import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
+import com.libertymutual.goforcode.wimp.repositories.MovieRepository;
+
+import io.swagger.annotations.Api;
 
 @RequestMapping("/api/awards")
+@Api(description = "Create, get, update, and delete awards.")
 @RestController
 public class AwardApiController {
 

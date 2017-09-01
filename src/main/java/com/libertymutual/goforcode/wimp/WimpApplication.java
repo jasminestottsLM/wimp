@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp;
+package com.libertymutual.goforcode.wimp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

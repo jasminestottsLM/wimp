@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.api;
+package com.libertymutual.goforcode.wimp.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wip;
+package com.libertymutual.goforcode.wimp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

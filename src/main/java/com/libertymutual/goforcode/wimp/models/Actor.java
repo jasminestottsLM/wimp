@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.models;
+package com.libertymutual.goforcode.wimp.models;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,7 +46,11 @@ public class Actor {
 	
 	@OneToMany
 	private List<Award> awards;
-
+	
+//	 public Actor(String firstName) {
+//	    	this.firstName = firstName;
+//	    } 
+ 
 	public void addAward(Award award) {
 		if (awards == null) {
 			awards = new ArrayList<Award>();
@@ -65,7 +69,7 @@ public class Actor {
 	public String getFirstName() {
 		return firstName;
 	}
-
+ 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -74,9 +78,6 @@ public class Actor {
 		return lastName;
 	}
 
-	public void setLastname(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public Long getActiveSinceYear() {
 		return activeSinceYear;
@@ -113,6 +114,6 @@ public class Actor {
 	public void setAwards(List<Award> awards) {
 		this.awards = awards;
 	}
-
+ 
 	
 }

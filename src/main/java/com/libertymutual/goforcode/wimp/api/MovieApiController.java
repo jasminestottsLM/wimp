@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.api;
+package com.libertymutual.goforcode.wimp.api;
 
 import java.util.List;
 
@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.liberymutual.goforcode.wimp.models.Actor;
-import com.liberymutual.goforcode.wimp.models.ActorWithMovies;
-import com.liberymutual.goforcode.wimp.models.Movie;
-import com.liberymutual.goforcode.wimp.repositories.ActorRepository;
-import com.liberymutual.goforcode.wimp.repositories.MovieRepository;
+import com.libertymutual.goforcode.wimp.models.Actor;
+import com.libertymutual.goforcode.wimp.models.Movie;
+import com.libertymutual.goforcode.wimp.repositories.ActorRepository;
+import com.libertymutual.goforcode.wimp.repositories.MovieRepository;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RequestMapping("/api/movies")
+@Api(description = "Create, get, update, and delete movies.  Also adds actors to movies.")
 @RestController
 public class MovieApiController {
 
@@ -47,6 +50,7 @@ public class MovieApiController {
 		return movie;
 	}
 	
+	@ApiOperation(value = "Delete movie using id", notes = "This will completely delete a movie!")
 	@DeleteMapping("{id}") 
 	public String delete(@PathVariable long id) {
 		try {
@@ -65,6 +69,9 @@ public class MovieApiController {
 		return movieRepo.save(movie);
 	}
 	
+	@ApiOperation(value = "Add an actor to a movie")
+	// if you use @ApiOperation(value = "${api.movie.associateactor}}"), you set {thing} in the application properties
+	// add api.movie.associateActor
 	@PostMapping("{movieId}/actors")
 	public Movie associateActor(@PathVariable long movieId, @RequestBody Actor actor) {
 		Movie movie = movieRepo.findOne(movieId);

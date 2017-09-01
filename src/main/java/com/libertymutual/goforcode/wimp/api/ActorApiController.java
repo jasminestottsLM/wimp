@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.api;
+package com.libertymutual.goforcode.wimp.api;
 
 import java.util.List;
 
@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.liberymutual.goforcode.wimp.models.Actor;
-import com.liberymutual.goforcode.wimp.models.ActorWithMovies;
-import com.liberymutual.goforcode.wimp.models.Award;
-import com.liberymutual.goforcode.wimp.models.Movie;
-import com.liberymutual.goforcode.wimp.repositories.ActorRepository;
-import com.liberymutual.goforcode.wimp.repositories.AwardRepository;
-import com.liberymutual.goforcode.wimp.repositories.MovieRepository;
+import com.libertymutual.goforcode.wimp.models.Actor;
+import com.libertymutual.goforcode.wimp.models.Award;
+import com.libertymutual.goforcode.wimp.models.Movie;
+import com.libertymutual.goforcode.wimp.repositories.ActorRepository;
+import com.libertymutual.goforcode.wimp.repositories.AwardRepository;
+import com.libertymutual.goforcode.wimp.repositories.MovieRepository;
+
+import io.swagger.annotations.Api;
 
 @RequestMapping("/api/actors")
+@Api(description = "Create, get, update, and delete actors.  Also adds awards to actors.")
 @RestController
 public class ActorApiController {
 
@@ -45,20 +47,21 @@ public class ActorApiController {
 		if (actor == null) {
 			throw new StuffNotFoundException();
 		}
-/*		ActorWithMovies newActor = new ActorWithMovies();
+/*	Replaced by the @JsonIdentityInfo in the Actor model	
+  		ActorWithMovies newActor = new ActorWithMovies();
 		newActor.setActiveSinceYear(actor.getActiveSinceYear());
 		newActor.setBirthDate(actor.getBirthDate());
 		newActor.setMovies(actor.getMovies());
 		newActor.setFirstName(actor.getFirstName());
-		newActor.setLastname(actor.getLastName());
+		newActor.setLastName(actor.getLastName());
 		return newActor;
-*/		
+*/		 
 		return actor;
-	}
-	
+	} 
+	   
 	@DeleteMapping("{id}") 
 	public String delete(@PathVariable long id) {
-		try {
+		try { 
 			Actor actor = actorRepo.findOne(id);
 			String msg = actor.getFirstName() + " " + actor.getLastName() + " has been deleted.";
 			actorRepo.delete(id);
@@ -66,23 +69,23 @@ public class ActorApiController {
 		}
 		catch (EmptyResultDataAccessException ardae) {
 			return "This actor does not exist";
-		}
+		} 
 	}
 	
 	@PostMapping("")
 	public Actor create(@RequestBody Actor actor) {
 		return actorRepo.save(actor);
-	}
-
+	}  
+ 
 	@PostMapping("{actorId}/awards") 
 	public Actor associateAward(@PathVariable long actorId, @RequestBody Award award) {
 		Actor actor = actorRepo.findOne(actorId);
 		award = awardRepo.findOne(award.getId());
 		actor.addAward(award);
 		actorRepo.save(actor);
-		return actor;
-	}
-	
+		return actor; 
+	} 
+	 
 	@PutMapping("{id}")
 	public Actor update(@RequestBody Actor actor, @PathVariable long id) {
 		actor.setId(id);

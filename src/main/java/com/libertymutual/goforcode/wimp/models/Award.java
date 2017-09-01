@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.models;
+package com.libertymutual.goforcode.wimp.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ public class Award {
 		
 	@Column(length=500, nullable=false)
 	private String title;
-	
+	 
 	@Column(length=200, nullable=false)
 	private String organization;
 	
@@ -35,13 +35,13 @@ public class Award {
     private Actor actor;
 
     public Award() {}
-    
+     
     public Award(String title, String organization, int year) {
     	this.title = title;
     	this.organization = organization;
     	this.year = year;
-    }
-    
+    } 
+     
 	public Long getId() {
 		return id;
 	}
@@ -77,7 +77,7 @@ public class Award {
 	public Actor getActor() {
 		return actor;
 	}
-
+ 
 	public void setActor(Actor actor) {
 		this.actor = actor;
 	}

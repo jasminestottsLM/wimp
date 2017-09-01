@@ -1,4 +1,4 @@
-package com.liberymutual.goforcode.wimp.models;
+package com.libertymutual.goforcode.wimp.models;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ public class ActorWithMovies extends Actor {
 	public List<Movie> noReallyMovies() {
 		return getMovies();
 	}
-	
+	 
 }
