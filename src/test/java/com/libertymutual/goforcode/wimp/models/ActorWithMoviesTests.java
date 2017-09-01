@@ -15,8 +15,9 @@ public class ActorWithMoviesTests {
 		ArrayList<Movie> movies = new ArrayList<Movie>();
 		movies.add(new Movie());
 		 
-		ActorWithMovies thing = new ActorWithMovies();
+		ActorWithMovies thing = new ActorWithMovies(); 
 		thing.setMovies(movies);
+		
 		
 		assertThat(thing.noReallyMovies()).isSameAs(movies);
 	}
